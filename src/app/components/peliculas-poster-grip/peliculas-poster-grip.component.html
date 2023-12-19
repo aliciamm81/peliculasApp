@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-3 mb-5 animate__animated animate__fadeIn" *ngFor="let pelicula of movies">
+        <img (click)="onMovieClick(pelicula)" [src]="pelicula.poster_path | poster" class="img-fluid poster">
+
+        <div>
+            <h3>{{pelicula.title}}</h3>
+            <div class="row">
+                <bar-rating [(rate)]="pelicula.vote_average" [max]="10">
+                    <ng-template ratingActive>
+                        <i class="fa-solid fa-star" style="margin: 2px; color: #edb867"></i>
+
+                    </ng-template>
+                    <ng-template ratingInactive>
+                        <i class="fa-solid fa-star" style="margin: 2px; color: #d2d2d2"></i>
+                    </ng-template>
+                </bar-rating>
+
+                <div class="col-2 text-white">
+                    {{pelicula.vote_average | number: '1.1-2'}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
